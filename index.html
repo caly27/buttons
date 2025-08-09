@@ -1,65 +1,51 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Infinity Stones - Realistic Gems</title>
-<style>
-  body {
-    margin: 0;
-    background: radial-gradient(circle at center, #050505, #000);
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    color: white;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 50px 20px;
-    min-height: 100vh;
-  }
-  h1 {
-    margin-bottom: 50px;
-    font-size: 3rem;
-    text-shadow: 0 0 15px rgba(255 255 255 / 0.12);
-    letter-spacing: 4px;
-  }
-  .container {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 48px;
-    justify-content: center;
-    max-width: 900px;
-    width: 100%;
-  }
-  .stone-button {
-    width: 130px;
-    height: 130px;
-    cursor: pointer;
-    user-select: none;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  svg {
-    width: 130px;
-    height: 130px;
-    border-radius: 50%;
-    filter: drop-shadow(0 0 8px rgba(0 0 0 / 0.8));
-    transition: filter 0.3s ease;
-  }
-  .stone-button:hover svg {
-    filter: drop-shadow(0 0 18px rgba(255 255 255 / 0.3));
-  }
-  .label {
-    margin-top: 16px;
-    font-weight: 700;
-    letter-spacing: 1.8px;
-    font-size: 1.1rem;
-    text-transform: uppercase;
-    color: #ddd;
-    user-select: none;
-  }
-
-</style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Infinity Stones (Realistic SVG)</title>
+  <style>
+    body {
+      margin: 0;
+      background: #0a0a0a;
+      font-family: sans-serif;
+      color: white;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 50px 20px;
+      min-height: 100vh;
+    }
+    h1 {
+      margin-bottom: 40px;
+      font-size: 2.8rem;
+      letter-spacing: 2px;
+    }
+    .container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 40px;
+      justify-content: center;
+    }
+    .stone {
+      width: 130px;
+      height: 130px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    svg {
+      width: 130px;
+      height: 130px;
+    }
+    .label {
+      margin-top: 12px;
+      font-size: 1rem;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: #ccc;
+    }
+  </style>
 </head>
 <body>
 
@@ -67,140 +53,134 @@
 
 <div class="container">
 
-  <div class="stone-button" title="Power Stone">
-    <svg viewBox="0 0 100 100" role="img" aria-label="Power Stone" >
+  <!-- Power -->
+  <div class="stone">
+    <svg viewBox="0 0 100 100">
       <defs>
-        <radialGradient id="powerGradient" cx="50%" cy="40%" r="60%">
-          <stop offset="0%" stop-color="#ff5858" />
-          <stop offset="45%" stop-color="#b22222" />
-          <stop offset="80%" stop-color="#660000" />
-          <stop offset="100%" stop-color="#1a0000" />
+        <radialGradient id="grad-power" cx="50%" cy="40%" r="60%">
+          <stop offset="0%" stop-color="#ff6e6e"/>
+          <stop offset="40%" stop-color="#8b0000"/>
+          <stop offset="80%" stop-color="#3d0000"/>
+          <stop offset="100%" stop-color="#1a0000"/>
         </radialGradient>
-        <radialGradient id="powerHighlight" cx="30%" cy="30%" r="30%">
-          <stop offset="0%" stop-color="white" stop-opacity="0.5"/>
+        <radialGradient id="highlight-power" cx="30%" cy="30%" r="25%">
+          <stop offset="0%" stop-color="white" stop-opacity="0.3"/>
           <stop offset="100%" stop-color="white" stop-opacity="0"/>
         </radialGradient>
-        <filter id="innerShadowPower" x="-50%" y="-50%" width="200%" height="200%">
-          <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#440000" flood-opacity="0.6"/>
-        </filter>
       </defs>
-      <circle cx="50" cy="50" r="45" fill="url(#powerGradient)" filter="url(#innerShadowPower)"/>
-      <circle cx="50" cy="50" r="45" fill="url(#powerHighlight)" />
+      <circle cx="50" cy="50" r="45" fill="url(#grad-power)" />
+      <circle cx="50" cy="50" r="45" fill="url(#highlight-power)" />
+      <circle cx="60" cy="60" r="6" fill="white" fill-opacity="0.05" />
     </svg>
     <div class="label">Power</div>
   </div>
 
-  <div class="stone-button" title="Space Stone">
-    <svg viewBox="0 0 100 100" role="img" aria-label="Space Stone" >
+  <!-- Space -->
+  <div class="stone">
+    <svg viewBox="0 0 100 100">
       <defs>
-        <radialGradient id="spaceGradient" cx="50%" cy="40%" r="60%">
-          <stop offset="0%" stop-color="#5a5aff" />
-          <stop offset="45%" stop-color="#111166" />
-          <stop offset="80%" stop-color="#000033" />
-          <stop offset="100%" stop-color="#00000a" />
+        <radialGradient id="grad-space" cx="50%" cy="40%" r="60%">
+          <stop offset="0%" stop-color="#5a5aff"/>
+          <stop offset="40%" stop-color="#111166"/>
+          <stop offset="80%" stop-color="#000033"/>
+          <stop offset="100%" stop-color="#00000a"/>
         </radialGradient>
-        <radialGradient id="spaceHighlight" cx="30%" cy="30%" r="30%">
-          <stop offset="0%" stop-color="white" stop-opacity="0.4"/>
+        <radialGradient id="highlight-space" cx="30%" cy="30%" r="25%">
+          <stop offset="0%" stop-color="white" stop-opacity="0.3"/>
           <stop offset="100%" stop-color="white" stop-opacity="0"/>
         </radialGradient>
-        <filter id="innerShadowSpace" x="-50%" y="-50%" width="200%" height="200%">
-          <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#000044" flood-opacity="0.5"/>
-        </filter>
       </defs>
-      <circle cx="50" cy="50" r="45" fill="url(#spaceGradient)" filter="url(#innerShadowSpace)"/>
-      <circle cx="50" cy="50" r="45" fill="url(#spaceHighlight)" />
+      <circle cx="50" cy="50" r="45" fill="url(#grad-space)" />
+      <circle cx="50" cy="50" r="45" fill="url(#highlight-space)" />
+      <circle cx="55" cy="60" r="6" fill="white" fill-opacity="0.04" />
     </svg>
     <div class="label">Space</div>
   </div>
 
-  <div class="stone-button" title="Reality Stone">
-    <svg viewBox="0 0 100 100" role="img" aria-label="Reality Stone" >
+  <!-- Reality -->
+  <div class="stone">
+    <svg viewBox="0 0 100 100">
       <defs>
-        <radialGradient id="realityGradient" cx="50%" cy="40%" r="60%">
-          <stop offset="0%" stop-color="#ff66cc" />
-          <stop offset="45%" stop-color="#80004d" />
-          <stop offset="80%" stop-color="#33001a" />
-          <stop offset="100%" stop-color="#1a000a" />
+        <radialGradient id="grad-reality" cx="50%" cy="40%" r="60%">
+          <stop offset="0%" stop-color="#ff66cc"/>
+          <stop offset="40%" stop-color="#80004d"/>
+          <stop offset="80%" stop-color="#33001a"/>
+          <stop offset="100%" stop-color="#1a000a"/>
         </radialGradient>
-        <radialGradient id="realityHighlight" cx="30%" cy="30%" r="30%">
-          <stop offset="0%" stop-color="white" stop-opacity="0.35"/>
+        <radialGradient id="highlight-reality" cx="30%" cy="30%" r="25%">
+          <stop offset="0%" stop-color="white" stop-opacity="0.3"/>
           <stop offset="100%" stop-color="white" stop-opacity="0"/>
         </radialGradient>
-        <filter id="innerShadowReality" x="-50%" y="-50%" width="200%" height="200%">
-          <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#660033" flood-opacity="0.6"/>
-        </filter>
       </defs>
-      <circle cx="50" cy="50" r="45" fill="url(#realityGradient)" filter="url(#innerShadowReality)"/>
-      <circle cx="50" cy="50" r="45" fill="url(#realityHighlight)" />
+      <circle cx="50" cy="50" r="45" fill="url(#grad-reality)" />
+      <circle cx="50" cy="50" r="45" fill="url(#highlight-reality)" />
+      <circle cx="58" cy="60" r="5" fill="white" fill-opacity="0.04" />
     </svg>
     <div class="label">Reality</div>
   </div>
 
-  <div class="stone-button" title="Soul Stone">
-    <svg viewBox="0 0 100 100" role="img" aria-label="Soul Stone" >
+  <!-- Soul -->
+  <div class="stone">
+    <svg viewBox="0 0 100 100">
       <defs>
-        <radialGradient id="soulGradient" cx="50%" cy="40%" r="60%">
-          <stop offset="0%" stop-color="#ffb347" />
-          <stop offset="45%" stop-color="#994d00" />
-          <stop offset="80%" stop-color="#4d2600" />
-          <stop offset="100%" stop-color="#2a1300" />
+        <radialGradient id="grad-soul" cx="50%" cy="40%" r="60%">
+          <stop offset="0%" stop-color="#ffb347"/>
+          <stop offset="40%" stop-color="#994d00"/>
+          <stop offset="80%" stop-color="#4d2600"/>
+          <stop offset="100%" stop-color="#2a1300"/>
         </radialGradient>
-        <radialGradient id="soulHighlight" cx="30%" cy="30%" r="30%">
-          <stop offset="0%" stop-color="white" stop-opacity="0.3"/>
+        <radialGradient id="highlight-soul" cx="30%" cy="30%" r="25%">
+          <stop offset="0%" stop-color="white" stop-opacity="0.2"/>
           <stop offset="100%" stop-color="white" stop-opacity="0"/>
         </radialGradient>
-        <filter id="innerShadowSoul" x="-50%" y="-50%" width="200%" height="200%">
-          <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#663300" flood-opacity="0.5"/>
-        </filter>
       </defs>
-      <circle cx="50" cy="50" r="45" fill="url(#soulGradient)" filter="url(#innerShadowSoul)"/>
-      <circle cx="50" cy="50" r="45" fill="url(#soulHighlight)" />
+      <circle cx="50" cy="50" r="45" fill="url(#grad-soul)" />
+      <circle cx="50" cy="50" r="45" fill="url(#highlight-soul)" />
+      <circle cx="52" cy="58" r="6" fill="white" fill-opacity="0.03" />
     </svg>
     <div class="label">Soul</div>
   </div>
 
-  <div class="stone-button" title="Time Stone">
-    <svg viewBox="0 0 100 100" role="img" aria-label="Time Stone" >
+  <!-- Time -->
+  <div class="stone">
+    <svg viewBox="0 0 100 100">
       <defs>
-        <radialGradient id="timeGradient" cx="50%" cy="40%" r="60%">
-          <stop offset="0%" stop-color="#66ff66" />
-          <stop offset="45%" stop-color="#006600" />
-          <stop offset="80%" stop-color="#003300" />
-          <stop offset="100%" stop-color="#001a00" />
+        <radialGradient id="grad-time" cx="50%" cy="40%" r="60%">
+          <stop offset="0%" stop-color="#66ff66"/>
+          <stop offset="40%" stop-color="#006600"/>
+          <stop offset="80%" stop-color="#003300"/>
+          <stop offset="100%" stop-color="#001a00"/>
         </radialGradient>
-        <radialGradient id="timeHighlight" cx="30%" cy="30%" r="30%">
+        <radialGradient id="highlight-time" cx="30%" cy="30%" r="25%">
           <stop offset="0%" stop-color="white" stop-opacity="0.25"/>
           <stop offset="100%" stop-color="white" stop-opacity="0"/>
         </radialGradient>
-        <filter id="innerShadowTime" x="-50%" y="-50%" width="200%" height="200%">
-          <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#004400" flood-opacity="0.5"/>
-        </filter>
       </defs>
-      <circle cx="50" cy="50" r="45" fill="url(#timeGradient)" filter="url(#innerShadowTime)"/>
-      <circle cx="50" cy="50" r="45" fill="url(#timeHighlight)" />
+      <circle cx="50" cy="50" r="45" fill="url(#grad-time)" />
+      <circle cx="50" cy="50" r="45" fill="url(#highlight-time)" />
+      <circle cx="57" cy="62" r="5" fill="white" fill-opacity="0.04" />
     </svg>
     <div class="label">Time</div>
   </div>
 
-  <div class="stone-button" title="Mind Stone">
-    <svg viewBox="0 0 100 100" role="img" aria-label="Mind Stone" >
+  <!-- Mind -->
+  <div class="stone">
+    <svg viewBox="0 0 100 100">
       <defs>
-        <radialGradient id="mindGradient" cx="50%" cy="40%" r="60%">
-          <stop offset="0%" stop-color="#ffff99" />
-          <stop offset="45%" stop-color="#666600" />
-          <stop offset="80%" stop-color="#333300" />
-          <stop offset="100%" stop-color="#1a1a00" />
+        <radialGradient id="grad-mind" cx="50%" cy="40%" r="60%">
+          <stop offset="0%" stop-color="#ffff99"/>
+          <stop offset="40%" stop-color="#666600"/>
+          <stop offset="80%" stop-color="#333300"/>
+          <stop offset="100%" stop-color="#1a1a00"/>
         </radialGradient>
-        <radialGradient id="mindHighlight" cx="30%" cy="30%" r="30%">
+        <radialGradient id="highlight-mind" cx="30%" cy="30%" r="25%">
           <stop offset="0%" stop-color="white" stop-opacity="0.2"/>
           <stop offset="100%" stop-color="white" stop-opacity="0"/>
         </radialGradient>
-        <filter id="innerShadowMind" x="-50%" y="-50%" width="200%" height="200%">
-          <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#666600" flood-opacity="0.5"/>
-        </filter>
       </defs>
-      <circle cx="50" cy="50" r="45" fill="url(#mindGradient)" filter="url(#innerShadowMind)"/>
-      <circle cx="50" cy="50" r="45" fill="url(#mindHighlight)" />
+      <circle cx="50" cy="50" r="45" fill="url(#grad-mind)" />
+      <circle cx="50" cy="50" r="45" fill="url(#highlight-mind)" />
+      <circle cx="58" cy="60" r="6" fill="white" fill-opacity="0.03" />
     </svg>
     <div class="label">Mind</div>
   </div>
