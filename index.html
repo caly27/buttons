@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" >
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Infinity Stones (Twinkle Fix)</title>
+  <title>Infinity Stones - Shiny Gems</title>
   <style>
     body {
       margin: 0;
@@ -46,7 +46,7 @@
       color: #ccc;
     }
     .sparkle {
-      transition: fill-opacity 1s ease-in-out;
+      transition: fill-opacity 1.2s ease-in-out;
     }
   </style>
 </head>
@@ -60,27 +60,27 @@
 const stones = [
   {
     name: "Power",
-    colors: ["#ff6e6e", "#8b0000", "#3d0000", "#1a0000"]
+    colors: ["#ff6060", "#cc0000", "#660000"]
   },
   {
     name: "Space",
-    colors: ["#5a5aff", "#111166", "#000033", "#00000a"]
+    colors: ["#4a4aff", "#1a1a66", "#000033"]
   },
   {
     name: "Reality",
-    colors: ["#ff66cc", "#80004d", "#33001a", "#1a000a"]
+    colors: ["#ff99cc", "#993366", "#33001a"]
   },
   {
     name: "Soul",
-    colors: ["#ffb347", "#994d00", "#4d2600", "#2a1300"]
+    colors: ["#ffbb55", "#994d00", "#4d2600"]
   },
   {
     name: "Time",
-    colors: ["#66ff66", "#006600", "#003300", "#001a00"]
+    colors: ["#66cc66", "#006600", "#003300"]
   },
   {
     name: "Mind",
-    colors: ["#ffff99", "#666600", "#333300", "#1a1a00"]
+    colors: ["#ffff99", "#666600", "#333300"]
   }
 ];
 
@@ -88,45 +88,42 @@ const container = document.getElementById('stone-container');
 
 stones.forEach(({ name, colors }) => {
   const id = name.toLowerCase();
-  const sparkleIds = [`${id}-s1`, `${id}-s2`, `${id}-s3`];
 
   const stone = document.createElement('div');
   stone.className = 'stone';
 
   stone.innerHTML = `
-<svg viewBox="0 0 100 100">
+<svg viewBox="0 0 100 100" role="img" aria-label="${name} Infinity Stone">
   <defs>
-    <radialGradient id="grad-${id}" cx="50%" cy="40%" r="60%">
-      <stop offset="0%" stop-color="${colors[0]}" />
-      <stop offset="40%" stop-color="${colors[1]}" />
-      <stop offset="80%" stop-color="${colors[2]}" />
-      <stop offset="100%" stop-color="${colors[3]}" />
+    <!-- Main shiny radial gradient -->
+    <radialGradient id="grad-${id}" cx="50%" cy="40%" r="65%">
+      <stop offset="0%" stop-color="${colors[0]}" stop-opacity="1" />
+      <stop offset="60%" stop-color="${colors[1]}" stop-opacity="0.8" />
+      <stop offset="90%" stop-color="${colors[2]}" stop-opacity="0.6" />
+      <stop offset="100%" stop-color="${colors[2]}" stop-opacity="0" />
     </radialGradient>
-    <radialGradient id="highlight-${id}" cx="30%" cy="30%" r="25%">
-      <stop offset="0%" stop-color="white" stop-opacity="0.3"/>
+
+    <!-- Highlight gradient for glossy effect -->
+    <radialGradient id="highlight-${id}" cx="30%" cy="30%" r="30%">
+      <stop offset="0%" stop-color="white" stop-opacity="0.4"/>
       <stop offset="100%" stop-color="white" stop-opacity="0"/>
     </radialGradient>
+
+    <!-- Sparkle blur -->
     <filter id="blur-${id}">
-      <feGaussianBlur stdDeviation="0.8"/>
+      <feGaussianBlur stdDeviation="0.7" />
     </filter>
   </defs>
 
-  <!-- Gem base -->
+  <!-- Gem base circle with shiny gradient -->
   <circle cx="50" cy="50" r="45" fill="url(#grad-${id})" />
+  <!-- Glossy highlight -->
   <circle cx="50" cy="50" r="45" fill="url(#highlight-${id})" />
 
-  <!-- Facet lines -->
-  <line x1="30" y1="30" x2="70" y2="70" stroke="white" stroke-opacity="0.05" stroke-width="1" />
-  <line x1="30" y1="70" x2="70" y2="30" stroke="white" stroke-opacity="0.05" stroke-width="1" />
-  <line x1="50" y1="10" x2="50" y2="90" stroke="white" stroke-opacity="0.05" stroke-width="1" />
-  <line x1="10" y1="50" x2="90" y2="50" stroke="white" stroke-opacity="0.05" stroke-width="1" />
-  <line x1="35" y1="20" x2="65" y2="80" stroke="white" stroke-opacity="0.03" stroke-width="1" />
-  <line x1="65" y1="20" x2="35" y2="80" stroke="white" stroke-opacity="0.03" stroke-width="1" />
-
-  <!-- Sparkles (will be animated) -->
-  <circle class="sparkle" id="${sparkleIds[0]}" cx="42" cy="28" r="1.5" fill="white" fill-opacity="0.15" filter="url(#blur-${id})" />
-  <circle class="sparkle" id="${sparkleIds[1]}" cx="64" cy="46" r="1.2" fill="white" fill-opacity="0.15" filter="url(#blur-${id})" />
-  <circle class="sparkle" id="${sparkleIds[2]}" cx="52" cy="72" r="1.3" fill="white" fill-opacity="0.15" filter="url(#blur-${id})" />
+  <!-- Sparkles -->
+  <circle class="sparkle" cx="40" cy="25" r="1.6" fill="white" fill-opacity="0.18" filter="url(#blur-${id})" />
+  <circle class="sparkle" cx="60" cy="45" r="1.4" fill="white" fill-opacity="0.15" filter="url(#blur-${id})" />
+  <circle class="sparkle" cx="52" cy="70" r="1.3" fill="white" fill-opacity="0.13" filter="url(#blur-${id})" />
 </svg>
 <div class="label">${name}</div>
   `;
@@ -138,12 +135,12 @@ stones.forEach(({ name, colors }) => {
 function animateSparkles() {
   const sparkles = document.querySelectorAll('.sparkle');
   sparkles.forEach(sparkle => {
-    const newOpacity = (0.05 + Math.random() * 0.25).toFixed(2); // 0.05–0.3
+    const newOpacity = (0.05 + Math.random() * 0.25).toFixed(2);
     sparkle.setAttribute('fill-opacity', newOpacity);
   });
 }
 
-// Animate every 1.2s with smooth transition
+// Animate every 1200ms with smooth transition
 setInterval(animateSparkles, 1200);
 </script>
 
