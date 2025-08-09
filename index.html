@@ -5,35 +5,34 @@
   <title>Infinity Stones</title>
   <style>
     body {
-      background: #0a0a0a;
-      color: #fff;
+      margin: 0;
+      background: radial-gradient(circle at top, #0d0d0d 0%, #000000 100%);
+      color: white;
       font-family: 'Segoe UI', sans-serif;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
       min-height: 100vh;
-      margin: 0;
     }
 
     h1 {
       margin-bottom: 40px;
-      text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+      text-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
     }
 
     .button-container {
       display: flex;
       flex-wrap: wrap;
-      gap: 20px;
+      gap: 30px;
       justify-content: center;
     }
 
     .gem-button {
-      background: transparent;
+      background: none;
       border: none;
-      cursor: pointer;
-      outline: none;
       padding: 0;
+      cursor: pointer;
       transition: transform 0.3s ease;
     }
 
@@ -41,44 +40,101 @@
       transform: scale(1.1);
     }
 
-    .gem {
-      width: 80px;
-      height: 80px;
-      transition: filter 0.4s;
-    }
-
-    .gem:hover {
-      filter: drop-shadow(0 0 10px white);
-    }
-
-    /* Stone-specific colors & glows */
-    .power svg polygon { fill: #ff1c1c; }
-    .space svg polygon { fill: #1c1cff; }
-    .reality svg polygon { fill: #ff1ccf; }
-    .soul svg polygon { fill: #ff8000; }
-    .time svg polygon { fill: #00ff00; }
-    .mind svg polygon { fill: #ffff1c; }
-
-    .gem svg {
-      filter: drop-shadow(0 0 8px rgba(255,255,255,0.3));
-    }
-
-    .label {
-      margin-top: 8px;
-      font-size: 14px;
-      text-align: center;
-      color: #ccc;
-    }
-
     .stone {
       display: flex;
       flex-direction: column;
       align-items: center;
     }
+
+    .label {
+      margin-top: 10px;
+      font-size: 14px;
+      color: #ccc;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .gem {
+      width: 80px;
+      height: 80px;
+      transition: filter 0.3s ease;
+    }
+
+    .gem:hover {
+      filter: drop-shadow(0 0 15px white);
+    }
+
+    svg polygon {
+      stroke: white;
+      stroke-width: 1;
+    }
+
+    /* Glowing animation */
+    @keyframes glow {
+      0% { filter: drop-shadow(0 0 5px white); }
+      50% { filter: drop-shadow(0 0 20px white); }
+      100% { filter: drop-shadow(0 0 5px white); }
+    }
+
+    /* Stone SVG gradient fills */
+    .power polygon {
+      fill: url(#gradPower);
+      animation: glow 4s infinite ease-in-out;
+    }
+    .space polygon {
+      fill: url(#gradSpace);
+      animation: glow 4s infinite ease-in-out;
+    }
+    .reality polygon {
+      fill: url(#gradReality);
+      animation: glow 4s infinite ease-in-out;
+    }
+    .soul polygon {
+      fill: url(#gradSoul);
+      animation: glow 4s infinite ease-in-out;
+    }
+    .time polygon {
+      fill: url(#gradTime);
+      animation: glow 4s infinite ease-in-out;
+    }
+    .mind polygon {
+      fill: url(#gradMind);
+      animation: glow 4s infinite ease-in-out;
+    }
+
   </style>
 </head>
 <body>
   <h1>Infinity Stones</h1>
+  <svg width="0" height="0">
+    <defs>
+      <radialGradient id="gradPower" cx="50%" cy="50%" r="50%">
+        <stop offset="0%" stop-color="#ff4b4b"/>
+        <stop offset="100%" stop-color="#8b0000"/>
+      </radialGradient>
+      <radialGradient id="gradSpace" cx="50%" cy="50%" r="50%">
+        <stop offset="0%" stop-color="#4b4bff"/>
+        <stop offset="100%" stop-color="#00008b"/>
+      </radialGradient>
+      <radialGradient id="gradReality" cx="50%" cy="50%" r="50%">
+        <stop offset="0%" stop-color="#ff4bff"/>
+        <stop offset="100%" stop-color="#80004b"/>
+      </radialGradient>
+      <radialGradient id="gradSoul" cx="50%" cy="50%" r="50%">
+        <stop offset="0%" stop-color="#ff9933"/>
+        <stop offset="100%" stop-color="#cc5200"/>
+      </radialGradient>
+      <radialGradient id="gradTime" cx="50%" cy="50%" r="50%">
+        <stop offset="0%" stop-color="#33ff33"/>
+        <stop offset="100%" stop-color="#006600"/>
+      </radialGradient>
+      <radialGradient id="gradMind" cx="50%" cy="50%" r="50%">
+        <stop offset="0%" stop-color="#ffff66"/>
+        <stop offset="100%" stop-color="#999900"/>
+      </radialGradient>
+    </defs>
+  </svg>
+
   <div class="button-container">
     <div class="stone power">
       <button class="gem-button">
