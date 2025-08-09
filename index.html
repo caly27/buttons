@@ -1,205 +1,200 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Infinity Stones</title>
-  <style>
-    /* Basic page setup */
-    body {
-      margin: 0;
-      background: radial-gradient(circle at center, #0a0a0a 0%, #000000 100%);
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      color: white;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      min-height: 100vh;
-      padding: 40px 20px;
-    }
-
-    h1 {
-      margin-bottom: 40px;
-      font-weight: 700;
-      font-size: 2.5rem;
-      text-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
-      letter-spacing: 3px;
-    }
-
-    /* Container for all stones */
-    .button-container {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 40px;
-      justify-content: center;
-      max-width: 800px;
-      width: 100%;
-    }
-
-    /* Each stone button */
-    .stone {
-      position: relative;
-      width: 120px;
-      height: 120px;
-      border-radius: 50%;
-      overflow: hidden;
-      box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
-      cursor: pointer;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      user-select: none;
-    }
-
-    .stone:hover {
-      transform: scale(1.1);
-      box-shadow: 0 0 30px rgba(255, 255, 255, 0.5);
-    }
-
-    /* The gem image fills the circle */
-    .stone img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      border-radius: 50%;
-      display: block;
-      pointer-events: none;
-      filter: drop-shadow(0 0 5px rgba(255,255,255,0.15));
-      transition: filter 0.3s ease;
-    }
-
-    .stone:hover img {
-      filter: drop-shadow(0 0 12px currentColor);
-    }
-
-    /* The glowing SVG circle overlay */
-    .stone svg {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 120px;
-      height: 120px;
-      pointer-events: none;
-    }
-
-    /* Text label below each stone */
-    .label {
-      margin-top: 12px;
-      font-size: 1rem;
-      font-weight: 600;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      color: #ddd;
-      user-select: none;
-    }
-
-    /* Color & glow per stone */
-
-    .power {
-      color: #ff1c1c;
-    }
-    .power svg circle {
-      stroke: #ff4d4d;
-      filter: drop-shadow(0 0 8px #ff1c1c);
-    }
-
-    .space {
-      color: #1c1cff;
-    }
-    .space svg circle {
-      stroke: #4d4dff;
-      filter: drop-shadow(0 0 8px #1c1cff);
-    }
-
-    .reality {
-      color: #ff1ccf;
-    }
-    .reality svg circle {
-      stroke: #ff4de0;
-      filter: drop-shadow(0 0 8px #ff1ccf);
-    }
-
-    .soul {
-      color: #ff8000;
-    }
-    .soul svg circle {
-      stroke: #ffaa33;
-      filter: drop-shadow(0 0 8px #ff8000);
-    }
-
-    .time {
-      color: #00ff00;
-    }
-    .time svg circle {
-      stroke: #33ff33;
-      filter: drop-shadow(0 0 8px #00ff00);
-    }
-
-    .mind {
-      color: #ffff1c;
-    }
-    .mind svg circle {
-      stroke: #ffff66;
-      filter: drop-shadow(0 0 8px #ffff1c);
-    }
-  </style>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Infinity Stones - Pure SVG & CSS Gems</title>
+<style>
+  body {
+    margin: 0;
+    background: radial-gradient(circle at center, #050505, #000);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 50px 20px;
+    min-height: 100vh;
+  }
+  h1 {
+    margin-bottom: 50px;
+    font-size: 3rem;
+    text-shadow: 0 0 20px rgba(255 255 255 / 0.15);
+    letter-spacing: 4px;
+  }
+  .container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 50px;
+    justify-content: center;
+    max-width: 900px;
+    width: 100%;
+  }
+  .stone-button {
+    width: 130px;
+    height: 130px;
+    cursor: pointer;
+    user-select: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  svg {
+    width: 130px;
+    height: 130px;
+    border-radius: 50%;
+    filter: drop-shadow(0 0 8px rgba(255 255 255 / 0.15));
+    transition: filter 0.3s ease, transform 0.3s ease;
+  }
+  .stone-button:hover svg {
+    filter: drop-shadow(0 0 25px currentColor);
+    transform: scale(1.1);
+  }
+  .label {
+    margin-top: 15px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    font-size: 1.1rem;
+    text-transform: uppercase;
+    color: #ddd;
+    user-select: none;
+  }
+  /* Colors for each stone */
+  .power { color: #ff1c1c; }
+  .space { color: #1c1cff; }
+  .reality { color: #ff1ccf; }
+  .soul { color: #ff8000; }
+  .time { color: #00ff00; }
+  .mind { color: #ffff1c; color: #e6e600; }
+</style>
 </head>
 <body>
 
-  <h1>Infinity Stones</h1>
+<h1>Infinity Stones</h1>
 
-  <div class="button-container">
+<div class="container">
 
-    <div class="stone power" title="Power Stone">
-      <img src="power.png" alt="Power Stone" />
-      <svg viewBox="0 0 100 100" aria-hidden="true">
-        <circle cx="50" cy="50" r="46" fill="none" stroke-width="3" />
-      </svg>
-      <div class="label">Power</div>
-    </div>
-
-    <div class="stone space" title="Space Stone">
-      <img src="space.png" alt="Space Stone" />
-      <svg viewBox="0 0 100 100" aria-hidden="true">
-        <circle cx="50" cy="50" r="46" fill="none" stroke-width="3" />
-      </svg>
-      <div class="label">Space</div>
-    </div>
-
-    <div class="stone reality" title="Reality Stone">
-      <img src="reality.png" alt="Reality Stone" />
-      <svg viewBox="0 0 100 100" aria-hidden="true">
-        <circle cx="50" cy="50" r="46" fill="none" stroke-width="3" />
-      </svg>
-      <div class="label">Reality</div>
-    </div>
-
-    <div class="stone soul" title="Soul Stone">
-      <img src="soul.png" alt="Soul Stone" />
-      <svg viewBox="0 0 100 100" aria-hidden="true">
-        <circle cx="50" cy="50" r="46" fill="none" stroke-width="3" />
-      </svg>
-      <div class="label">Soul</div>
-    </div>
-
-    <div class="stone time" title="Time Stone">
-      <img src="time.png" alt="Time Stone" />
-      <svg viewBox="0 0 100 100" aria-hidden="true">
-        <circle cx="50" cy="50" r="46" fill="none" stroke-width="3" />
-      </svg>
-      <div class="label">Time</div>
-    </div>
-
-    <div class="stone mind" title="Mind Stone">
-      <img src="mind.png" alt="Mind Stone" />
-      <svg viewBox="0 0 100 100" aria-hidden="true">
-        <circle cx="50" cy="50" r="46" fill="none" stroke-width="3" />
-      </svg>
-      <div class="label">Mind</div>
-    </div>
-
+  <div class="stone-button power" title="Power Stone">
+    <svg viewBox="0 0 100 100" role="img" aria-label="Power Stone">
+      <defs>
+        <radialGradient id="grad-power" cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stop-color="#ff4d4d" />
+          <stop offset="70%" stop-color="#b30000" />
+          <stop offset="100%" stop-color="#660000" />
+        </radialGradient>
+        <filter id="glow-power" x="-50%" y="-50%" width="200%" height="200%" >
+          <feDropShadow dx="0" dy="0" stdDeviation="4" flood-color="#ff1c1c" flood-opacity="0.9"/>
+          <feDropShadow dx="0" dy="0" stdDeviation="8" flood-color="#ff4d4d" flood-opacity="0.6"/>
+        </filter>
+      </defs>
+      <circle cx="50" cy="50" r="45" fill="url(#grad-power)" filter="url(#glow-power)" />
+      <circle cx="50" cy="50" r="35" fill="none" stroke="#fff5" stroke-width="3" />
+      <circle cx="50" cy="40" r="12" fill="white" fill-opacity="0.25" />
+    </svg>
+    <div class="label">Power</div>
   </div>
+
+  <div class="stone-button space" title="Space Stone">
+    <svg viewBox="0 0 100 100" role="img" aria-label="Space Stone">
+      <defs>
+        <radialGradient id="grad-space" cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stop-color="#4d4dff" />
+          <stop offset="70%" stop-color="#000066" />
+          <stop offset="100%" stop-color="#000022" />
+        </radialGradient>
+        <filter id="glow-space" x="-50%" y="-50%" width="200%" height="200%" >
+          <feDropShadow dx="0" dy="0" stdDeviation="4" flood-color="#1c1cff" flood-opacity="0.9"/>
+          <feDropShadow dx="0" dy="0" stdDeviation="8" flood-color="#4d4dff" flood-opacity="0.6"/>
+        </filter>
+      </defs>
+      <circle cx="50" cy="50" r="45" fill="url(#grad-space)" filter="url(#glow-space)" />
+      <circle cx="50" cy="50" r="35" fill="none" stroke="#fff5" stroke-width="3" />
+      <circle cx="50" cy="40" r="12" fill="white" fill-opacity="0.25" />
+    </svg>
+    <div class="label">Space</div>
+  </div>
+
+  <div class="stone-button reality" title="Reality Stone">
+    <svg viewBox="0 0 100 100" role="img" aria-label="Reality Stone">
+      <defs>
+        <radialGradient id="grad-reality" cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stop-color="#ff4de0" />
+          <stop offset="70%" stop-color="#990066" />
+          <stop offset="100%" stop-color="#660044" />
+        </radialGradient>
+        <filter id="glow-reality" x="-50%" y="-50%" width="200%" height="200%" >
+          <feDropShadow dx="0" dy="0" stdDeviation="4" flood-color="#ff1ccf" flood-opacity="0.9"/>
+          <feDropShadow dx="0" dy="0" stdDeviation="8" flood-color="#ff4de0" flood-opacity="0.6"/>
+        </filter>
+      </defs>
+      <circle cx="50" cy="50" r="45" fill="url(#grad-reality)" filter="url(#glow-reality)" />
+      <circle cx="50" cy="50" r="35" fill="none" stroke="#fff5" stroke-width="3" />
+      <circle cx="50" cy="40" r="12" fill="white" fill-opacity="0.25" />
+    </svg>
+    <div class="label">Reality</div>
+  </div>
+
+  <div class="stone-button soul" title="Soul Stone">
+    <svg viewBox="0 0 100 100" role="img" aria-label="Soul Stone">
+      <defs>
+        <radialGradient id="grad-soul" cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stop-color="#ffaa33" />
+          <stop offset="70%" stop-color="#664400" />
+          <stop offset="100%" stop-color="#331a00" />
+        </radialGradient>
+        <filter id="glow-soul" x="-50%" y="-50%" width="200%" height="200%" >
+          <feDropShadow dx="0" dy="0" stdDeviation="4" flood-color="#ff8000" flood-opacity="0.9"/>
+          <feDropShadow dx="0" dy="0" stdDeviation="8" flood-color="#ffaa33" flood-opacity="0.6"/>
+        </filter>
+      </defs>
+      <circle cx="50" cy="50" r="45" fill="url(#grad-soul)" filter="url(#glow-soul)" />
+      <circle cx="50" cy="50" r="35" fill="none" stroke="#fff5" stroke-width="3" />
+      <circle cx="50" cy="40" r="12" fill="white" fill-opacity="0.25" />
+    </svg>
+    <div class="label">Soul</div>
+  </div>
+
+  <div class="stone-button time" title="Time Stone">
+    <svg viewBox="0 0 100 100" role="img" aria-label="Time Stone">
+      <defs>
+        <radialGradient id="grad-time" cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stop-color="#33ff33" />
+          <stop offset="70%" stop-color="#004400" />
+          <stop offset="100%" stop-color="#001a00" />
+        </radialGradient>
+        <filter id="glow-time" x="-50%" y="-50%" width="200%" height="200%" >
+          <feDropShadow dx="0" dy="0" stdDeviation="4" flood-color="#00ff00" flood-opacity="0.9"/>
+          <feDropShadow dx="0" dy="0" stdDeviation="8" flood-color="#33ff33" flood-opacity="0.6"/>
+        </filter>
+      </defs>
+      <circle cx="50" cy="50" r="45" fill="url(#grad-time)" filter="url(#glow-time)" />
+      <circle cx="50" cy="50" r="35" fill="none" stroke="#fff5" stroke-width="3" />
+      <circle cx="50" cy="40" r="12" fill="white" fill-opacity="0.25" />
+    </svg>
+    <div class="label">Time</div>
+  </div>
+
+  <div class="stone-button mind" title="Mind Stone">
+    <svg viewBox="0 0 100 100" role="img" aria-label="Mind Stone">
+      <defs>
+        <radialGradient id="grad-mind" cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stop-color="#ffff66" />
+          <stop offset="70%" stop-color="#666600" />
+          <stop offset="100%" stop-color="#333300" />
+        </radialGradient>
+        <filter id="glow-mind" x="-50%" y="-50%" width="200%" height="200%" >
+          <feDropShadow dx="0" dy="0" stdDeviation="4" flood-color="#ffff1c" flood-opacity="0.9"/>
+          <feDropShadow dx="0" dy="0" stdDeviation="8" flood-color="#ffff66" flood-opacity="0.6"/>
+        </filter>
+      </defs>
+      <circle cx="50" cy="50" r="45" fill="url(#grad-mind)" filter="url(#glow-mind)" />
+      <circle cx="50" cy="50" r="35" fill="none" stroke="#fff5" stroke-width="3" />
+      <circle cx="50" cy="40" r="12" fill="white" fill-opacity="0.25" />
+    </svg>
+    <div class="label">Mind</div>
+  </div>
+
+</div>
 
 </body>
 </html>
