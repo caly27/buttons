@@ -1,189 +1,205 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Infinity Stones</title>
   <style>
+    /* Basic page setup */
     body {
       margin: 0;
-      background: radial-gradient(circle at top, #0d0d0d 0%, #000000 100%);
+      background: radial-gradient(circle at center, #0a0a0a 0%, #000000 100%);
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       color: white;
-      font-family: 'Segoe UI', sans-serif;
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: center;
       min-height: 100vh;
+      padding: 40px 20px;
     }
 
     h1 {
       margin-bottom: 40px;
+      font-weight: 700;
+      font-size: 2.5rem;
       text-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+      letter-spacing: 3px;
     }
 
+    /* Container for all stones */
     .button-container {
       display: flex;
       flex-wrap: wrap;
-      gap: 30px;
+      gap: 40px;
       justify-content: center;
+      max-width: 800px;
+      width: 100%;
     }
 
-    .gem-button {
-      background: none;
-      border: none;
-      padding: 0;
-      cursor: pointer;
-      transition: transform 0.3s ease;
-    }
-
-    .gem-button:hover {
-      transform: scale(1.1);
-    }
-
+    /* Each stone button */
     .stone {
+      position: relative;
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      overflow: hidden;
+      box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
+      cursor: pointer;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
       display: flex;
       flex-direction: column;
       align-items: center;
+      user-select: none;
     }
 
-    .label {
-      margin-top: 10px;
-      font-size: 14px;
-      color: #ccc;
-      text-transform: uppercase;
-      letter-spacing: 1px;
+    .stone:hover {
+      transform: scale(1.1);
+      box-shadow: 0 0 30px rgba(255, 255, 255, 0.5);
     }
 
-    .gem {
-      width: 80px;
-      height: 80px;
+    /* The gem image fills the circle */
+    .stone img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 50%;
+      display: block;
+      pointer-events: none;
+      filter: drop-shadow(0 0 5px rgba(255,255,255,0.15));
       transition: filter 0.3s ease;
     }
 
-    .gem:hover {
-      filter: drop-shadow(0 0 15px white);
+    .stone:hover img {
+      filter: drop-shadow(0 0 12px currentColor);
     }
 
-    svg polygon {
-      stroke: white;
-      stroke-width: 1;
+    /* The glowing SVG circle overlay */
+    .stone svg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 120px;
+      height: 120px;
+      pointer-events: none;
     }
 
-    /* Glowing animation */
-    @keyframes glow {
-      0% { filter: drop-shadow(0 0 5px white); }
-      50% { filter: drop-shadow(0 0 20px white); }
-      100% { filter: drop-shadow(0 0 5px white); }
+    /* Text label below each stone */
+    .label {
+      margin-top: 12px;
+      font-size: 1rem;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #ddd;
+      user-select: none;
     }
 
-    /* Stone SVG gradient fills */
-    .power polygon {
-      fill: url(#gradPower);
-      animation: glow 4s infinite ease-in-out;
+    /* Color & glow per stone */
+
+    .power {
+      color: #ff1c1c;
     }
-    .space polygon {
-      fill: url(#gradSpace);
-      animation: glow 4s infinite ease-in-out;
-    }
-    .reality polygon {
-      fill: url(#gradReality);
-      animation: glow 4s infinite ease-in-out;
-    }
-    .soul polygon {
-      fill: url(#gradSoul);
-      animation: glow 4s infinite ease-in-out;
-    }
-    .time polygon {
-      fill: url(#gradTime);
-      animation: glow 4s infinite ease-in-out;
-    }
-    .mind polygon {
-      fill: url(#gradMind);
-      animation: glow 4s infinite ease-in-out;
+    .power svg circle {
+      stroke: #ff4d4d;
+      filter: drop-shadow(0 0 8px #ff1c1c);
     }
 
+    .space {
+      color: #1c1cff;
+    }
+    .space svg circle {
+      stroke: #4d4dff;
+      filter: drop-shadow(0 0 8px #1c1cff);
+    }
+
+    .reality {
+      color: #ff1ccf;
+    }
+    .reality svg circle {
+      stroke: #ff4de0;
+      filter: drop-shadow(0 0 8px #ff1ccf);
+    }
+
+    .soul {
+      color: #ff8000;
+    }
+    .soul svg circle {
+      stroke: #ffaa33;
+      filter: drop-shadow(0 0 8px #ff8000);
+    }
+
+    .time {
+      color: #00ff00;
+    }
+    .time svg circle {
+      stroke: #33ff33;
+      filter: drop-shadow(0 0 8px #00ff00);
+    }
+
+    .mind {
+      color: #ffff1c;
+    }
+    .mind svg circle {
+      stroke: #ffff66;
+      filter: drop-shadow(0 0 8px #ffff1c);
+    }
   </style>
 </head>
 <body>
+
   <h1>Infinity Stones</h1>
-  <svg width="0" height="0">
-    <defs>
-      <radialGradient id="gradPower" cx="50%" cy="50%" r="50%">
-        <stop offset="0%" stop-color="#ff4b4b"/>
-        <stop offset="100%" stop-color="#8b0000"/>
-      </radialGradient>
-      <radialGradient id="gradSpace" cx="50%" cy="50%" r="50%">
-        <stop offset="0%" stop-color="#4b4bff"/>
-        <stop offset="100%" stop-color="#00008b"/>
-      </radialGradient>
-      <radialGradient id="gradReality" cx="50%" cy="50%" r="50%">
-        <stop offset="0%" stop-color="#ff4bff"/>
-        <stop offset="100%" stop-color="#80004b"/>
-      </radialGradient>
-      <radialGradient id="gradSoul" cx="50%" cy="50%" r="50%">
-        <stop offset="0%" stop-color="#ff9933"/>
-        <stop offset="100%" stop-color="#cc5200"/>
-      </radialGradient>
-      <radialGradient id="gradTime" cx="50%" cy="50%" r="50%">
-        <stop offset="0%" stop-color="#33ff33"/>
-        <stop offset="100%" stop-color="#006600"/>
-      </radialGradient>
-      <radialGradient id="gradMind" cx="50%" cy="50%" r="50%">
-        <stop offset="0%" stop-color="#ffff66"/>
-        <stop offset="100%" stop-color="#999900"/>
-      </radialGradient>
-    </defs>
-  </svg>
 
   <div class="button-container">
-    <div class="stone power">
-      <button class="gem-button">
-        <svg class="gem" viewBox="0 0 100 100">
-          <polygon points="50,5 90,30 75,90 25,90 10,30" />
-        </svg>
-      </button>
+
+    <div class="stone power" title="Power Stone">
+      <img src="power.png" alt="Power Stone" />
+      <svg viewBox="0 0 100 100" aria-hidden="true">
+        <circle cx="50" cy="50" r="46" fill="none" stroke-width="3" />
+      </svg>
       <div class="label">Power</div>
     </div>
-    <div class="stone space">
-      <button class="gem-button">
-        <svg class="gem" viewBox="0 0 100 100">
-          <polygon points="50,5 85,20 95,60 50,95 5,60 15,20" />
-        </svg>
-      </button>
+
+    <div class="stone space" title="Space Stone">
+      <img src="space.png" alt="Space Stone" />
+      <svg viewBox="0 0 100 100" aria-hidden="true">
+        <circle cx="50" cy="50" r="46" fill="none" stroke-width="3" />
+      </svg>
       <div class="label">Space</div>
     </div>
-    <div class="stone reality">
-      <button class="gem-button">
-        <svg class="gem" viewBox="0 0 100 100">
-          <polygon points="50,10 90,50 50,90 10,50" />
-        </svg>
-      </button>
+
+    <div class="stone reality" title="Reality Stone">
+      <img src="reality.png" alt="Reality Stone" />
+      <svg viewBox="0 0 100 100" aria-hidden="true">
+        <circle cx="50" cy="50" r="46" fill="none" stroke-width="3" />
+      </svg>
       <div class="label">Reality</div>
     </div>
-    <div class="stone soul">
-      <button class="gem-button">
-        <svg class="gem" viewBox="0 0 100 100">
-          <polygon points="50,0 80,30 65,100 35,100 20,30" />
-        </svg>
-      </button>
+
+    <div class="stone soul" title="Soul Stone">
+      <img src="soul.png" alt="Soul Stone" />
+      <svg viewBox="0 0 100 100" aria-hidden="true">
+        <circle cx="50" cy="50" r="46" fill="none" stroke-width="3" />
+      </svg>
       <div class="label">Soul</div>
     </div>
-    <div class="stone time">
-      <button class="gem-button">
-        <svg class="gem" viewBox="0 0 100 100">
-          <polygon points="50,5 95,25 95,75 50,95 5,75 5,25" />
-        </svg>
-      </button>
+
+    <div class="stone time" title="Time Stone">
+      <img src="time.png" alt="Time Stone" />
+      <svg viewBox="0 0 100 100" aria-hidden="true">
+        <circle cx="50" cy="50" r="46" fill="none" stroke-width="3" />
+      </svg>
       <div class="label">Time</div>
     </div>
-    <div class="stone mind">
-      <button class="gem-button">
-        <svg class="gem" viewBox="0 0 100 100">
-          <polygon points="50,0 70,20 80,80 50,100 20,80 30,20" />
-        </svg>
-      </button>
+
+    <div class="stone mind" title="Mind Stone">
+      <img src="mind.png" alt="Mind Stone" />
+      <svg viewBox="0 0 100 100" aria-hidden="true">
+        <circle cx="50" cy="50" r="46" fill="none" stroke-width="3" />
+      </svg>
       <div class="label">Mind</div>
     </div>
+
   </div>
+
 </body>
 </html>
